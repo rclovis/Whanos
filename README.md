@@ -17,7 +17,7 @@ If you have any usable files related to Jenkins, Kubernetes, or other technologi
 You are free to decide the file structure.
 Any file not present in the repository will be considered to be the equivalent of "hard-coded" into your infrastructure.
 
-> ![info]
+> [!info]
 > Some files (such as **secrets**, or **generated configuration files** that are specific to each
 instance) will obviously **not**, and should not, be in the repository, but other files (such
 as eventual *deployment templates* or *Jenkins Configuration* as Code files) should be in

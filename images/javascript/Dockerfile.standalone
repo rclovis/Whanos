@@ -1,0 +1,7 @@
+FROM node:20.9
+RUN ls -la
+COPY ./app /app/app/
+COPY ./package.json /app/
+WORKDIR /app
+RUN npm install
+CMD [ "node", "." ]

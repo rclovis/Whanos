@@ -1,4 +1,6 @@
-# Repository structure
+# Whanos
+
+## Repository structure
 
 You will have to place your Dockerfiles in an images directory, itself placed at the root of your repository.
 Each language’s Dockerfiles will be named Dockerfile.base and Dockerfile.standalone, respectively for the
@@ -20,10 +22,11 @@ Any file not present in the repository will be considered to be the equivalent o
 > [!important]
 > Some files (such as **secrets**, or **generated configuration files** that are specific to each instance) will obviously **not**, and should not, be in the repository, but other files (such as eventual *deployment templates* or *Jenkins* as Code files) should be in your repository if you want to benefit from them during the defense.
 
+## Bonuses
 
-# Bonuses
 Whanos loves that!
 If you want to be blessed with the power of DevOps, you can for example:
+
 - support more languages (e.g.: C++, Go, Rust, or Brainfuck);
 - handle other branches than the default one;
 - display a Whanos ASCII art when launching a job;

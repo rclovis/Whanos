@@ -1,8 +1,0 @@
-control]
-192.168.12.1
-foo-[a:c].example.org
-localhost ansible_connection=local
-
-[managed]
-192.168.12.2
-192.168.12.3

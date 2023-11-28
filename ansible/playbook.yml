@@ -1,0 +1,14 @@
+---
+- name: Playbook base install
+  hosts: docker
+  become: true
+  become_method: sudo
+  roles:
+    - docker
+
+- name: kubespray
+  hosts: kubernetes
+  become: true
+  become_method: sudo
+  roles:
+    - kubernetes

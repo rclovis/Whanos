@@ -1,0 +1,19 @@
+---
+- name: Update OS
+  apt:
+    update_cache: yes
+
+- name: Install essential packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - git
+    - gnupg2
+    - docker-ce
+
+- name: Set timezone
+  timezone:
+    name: Europe/Paris

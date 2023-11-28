@@ -1,0 +1,5 @@
+*.ini
+venv
+kube_venv
+hosts.yaml
+kubespray

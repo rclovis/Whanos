@@ -1,0 +1,6 @@
+FROM java:21
+COPY app /app/app/
+COPY pom.xml /app/
+WORKDIR /app
+RUN mvn package
+CMD [ "java", "-jar", "app.jar" ]

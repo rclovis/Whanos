@@ -1,0 +1,7 @@
+FROM java:21
+
+ONBUILD COPY . /app
+ONBUILD WORKDIR /app
+ONBUILD RUN mvn package
+
+CMD [ "java", "-jar", "app.jar" ]

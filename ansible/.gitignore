@@ -3,3 +3,4 @@ venv
 kube_venv
 hosts.yaml
 kubespray
+admin.conf

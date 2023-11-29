@@ -1,6 +1,7 @@
 FROM gcc:13.2
-COPY app /app/app/
-COPY Makefile /app/
+
+COPY . /app
 WORKDIR /app
 RUN make
+
 CMD [ "./compiled-app" ]

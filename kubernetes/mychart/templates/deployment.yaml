@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.deployment.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: {{ .Values.image | quote }}
+        resources:
+          limits:
+            cpu: {{ .Values.deployment.resources.limits.cpu | default "500m" }}
+            memory: {{ .Values.deployment.resources.limits.memory | default "128M" }}
+        {{- if .Values.deployment.resources.requests }}
+          requests:
+            cpu: {{ .Values.deployment.resources.requests.cpu | default "100m" }}
+            memory: {{ .Values.deployment.resources.requests.memory | default "64M" }}
+        {{- end }}
+        {{- if .Values.deployment.ports}}
+        ports:
+        {{- range $port := .Values.deployment.ports }}
+        - containerPort: {{ $port }}
+          protocol: TCP
+        {{- end }}
+        {{- end }}

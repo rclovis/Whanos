@@ -1,33 +1,40 @@
 # Whanos
 
-## Repository structure
+The Whanos project aims at developing an automated pipeline to test, compile and deploy applications written in any languages!
 
-You will have to place your Dockerfiles in an images directory, itself placed at the root of your repository.
-Each language’s Dockerfiles will be named Dockerfile.base and Dockerfile.standalone, respectively for the
-base and the standalone images, placed in a directory bearing the name of the language, in the following
-fashion:
+## Prerequisites
 
-```console
-> ls images
-befunge c java javascript python
-> ls images/javascript
-Dockerfile.base Dockerfile.standalone
-```
+Before you begin, ensure you have these packages installed in your machine:
+- **Ansible**
+- **git**
 
-If you have any usable files related to Jenkins, Kubernetes, or other technologies you use (e.g.: helper scripts, configuration files for easy redeployment of the infrastructure), they need to be placed in your repository.
+## Getting Started
 
-You are free to decide the file structure.
-Any file not present in the repository will be considered to be the equivalent of "hard-coded" into your infrastructure.
+### Deploy the pipeline
+Deploying the pipeline is done in two steps:
 
-> [!important]
-> Some files (such as **secrets**, or **generated configuration files** that are specific to each instance) will obviously **not**, and should not, be in the repository, but other files (such as eventual *deployment templates* or *Jenkins* as Code files) should be in your repository if you want to benefit from them during the defense.
+To deploy **Kubernetes**, check out : [[Kubernetes deployment]]
+To deploy **Jenkins** and the **Registry**, check out :
 
-## Bonuses
+### Use the pipeline
+To use the pipeline, you must understand how to configure your repo and how to launch the Jenkins job:
 
-Whanos loves that!
-If you want to be blessed with the power of DevOps, you can for example:
+To start using your **pipeline**, check out:
+To start **deploying** your apps and **access** them check out: [[Kubernetes usage]]
 
-- support more languages (e.g.: C++, Go, Rust, or Brainfuck);
-- handle other branches than the default one;
-- display a Whanos ASCII art when launching a job;
-- extend the configuration capabilities
+## Creator
+
+<div style="display: flex; justify-content: space-between;">
+    <a href="https://github.com/EstusSipper">
+        <img src="https://media.licdn.com/dms/image/C4E03AQF6AIitN8q7cg/profile-displayphoto-shrink_400_400/0/1651531289334?e=1703721600&v=beta&t=nCsDz0wBgls-nLvLAzpAZqELOfTItPVJtoWJwRtmSGk" width="150" height="150">
+        <p>Erwan Gonzales</p>
+    </a>
+    <a href="https://github.com/rclovis">
+        <img src="https://avatars.githubusercontent.com/u/91875893?v=4" width="150" height="150">
+        <p>Clovis Rabot</p>
+    </a>
+    <a href="https://github.com/TotoFunki">
+        <img src="https://media.licdn.com/dms/image/D4E03AQF5p--YcDCWoQ/profile-displayphoto-shrink_800_800/0/1697809819173?e=1706745600&v=beta&t=FIEWA66x7PpYe9ZfTns7dk1rxuWL16BEAU34tHwqS0Q" width="150" height="150">
+        <p>Théo Liennard</p>
+    </a>
+</div>

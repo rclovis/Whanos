@@ -1,0 +1,33 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users: # Setup admin user
+       - id: ${JENKINS_ADMIN_ID}
+         password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      entries:
+      - group:
+          name: "authenticated"
+          permissions:
+          - "Overall/Read"
+      - user:
+          name: "admin"
+          permissions:
+          - "Overall/Administer"
+  remotingSecurity:
+    enabled: true
+
+jobs:
+  - file: /var/jenkins_home/jobs.groovy
+
+security:
+  queueItemAuthenticator:
+    authenticators:
+    - global: # Set job permission as those of the triggering user
+        strategy: triggeringUsersAuthorizationStrategy
+
+unclassified:
+  location:
+    url: http://127.0.0.1:8080

@@ -1,0 +1,8 @@
+configuration-as-code:latest
+matrix-auth:latest
+authorize-project:latest
+cloudbees-folder:latest
+job-dsl:latest
+git:latest
+github:latest
+ws-cleanup:latest

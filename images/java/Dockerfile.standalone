@@ -1,5 +1,5 @@
 FROM java:21
-
+SHELL ["/bin/bash", "-c"]
 COPY . /app
 WORKDIR /app
 RUN mvn package

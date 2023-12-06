@@ -23,4 +23,4 @@ COPY kubernetes /var/jenkins_home/kubernetes
 COPY jenkins/jobs.groovy /var/jenkins_home/jobs.groovy
 COPY jenkins/jenkins.yaml /var/jenkins_home/jenkins.yaml
 COPY jenkins/whanos.sh /var/jenkins_home/whanos.sh
-# COPY ansible/roles/kubernetes/admin.conf ~/.kube/config
+COPY ansible/roles/kubernetes/admin.conf ~/.kube/config

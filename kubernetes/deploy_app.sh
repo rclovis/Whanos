@@ -6,13 +6,16 @@ if [ $# -ne 3 ]; then
     exit 1
 fi
 
-SHABSOLUTE=$(cd "$(dirname "$0")"; pwd)
+SHABSOLUTE=$(
+    cd "$(dirname "$0")"
+    pwd
+)
 EXECPATH=$(pwd)
 
 rm -f $SHABSOLUTE/mychart/values.yaml
 touch $SHABSOLUTE/mychart/values.yaml
-cat $2 >> $SHABSOLUTE/mychart/values.yaml
-echo "" >> $SHABSOLUTE/mychart/values.yaml
-echo "image: $3" >> $SHABSOLUTE/mychart/values.yaml
+cat $2 >>$SHABSOLUTE/mychart/values.yaml
+echo "" >>$SHABSOLUTE/mychart/values.yaml
+echo "image: $3" >>$SHABSOLUTE/mychart/values.yaml
 
 helm install $1 $SHABSOLUTE/mychart

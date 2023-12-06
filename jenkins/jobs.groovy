@@ -18,7 +18,7 @@ freeStyleJob('link-project') {
                         cron('* * * * *')
                     }
                     scm {
-                        git("$PROJECT_URL")
+                        github("$PROJECT_URL")
                     }
                     steps {
                         shell("/var/jenkins_home/whanos.sh $PROJECT_NAME")

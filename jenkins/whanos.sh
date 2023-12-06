@@ -25,7 +25,7 @@ find_languages() {
     fi
     echo "${languages[0]}"
 }
-cat /var/jenkins_home/whanos.txt
+
 echo "Starting whanos..."
 echo "Current directory: $(pwd)"
 
@@ -73,18 +73,12 @@ if [[ "$last_hash" != "$current_hash" ]]; then
     echo "Searching for whanos.yml..."
     if [[ -f whanos.yml ]]; then
         echo "whanos.yml found, deploying..."
-
-        # Todo:
-        # exec deployement script
-        # $1 deployment name
-        # $2 path to whanos.yml
-        # $3 image name
-
+        /var/jenkins_home/kubernetes/deploy_app.sh "$1" "$(pwd)/whanos.yml" "localhost:5000/$1"
     else
         echo "whanos.yml not found, not issuing deployment..."
     fi
 
     echo "Job done!"
-    elseh
+else
     echo "No changes detected, aborting..."
 fi

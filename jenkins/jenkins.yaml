@@ -3,19 +3,19 @@ jenkins:
     local:
       allowsSignup: false
       users: # Setup admin user
-       - id: ${JENKINS_ADMIN_ID}
-         password: ${JENKINS_ADMIN_PASSWORD}
+        - id: ${JENKINS_ADMIN_ID}
+          password: ${JENKINS_ADMIN_PASSWORD}
   authorizationStrategy:
     globalMatrix:
       entries:
-      - group:
-          name: "authenticated"
-          permissions:
-          - "Overall/Read"
-      - user:
-          name: "admin"
-          permissions:
-          - "Overall/Administer"
+        - group:
+            name: "authenticated"
+            permissions:
+              - "Overall/Read"
+        - user:
+            name: "admin"
+            permissions:
+              - "Overall/Administer"
   remotingSecurity:
     enabled: true
 
@@ -25,8 +25,10 @@ jobs:
 security:
   queueItemAuthenticator:
     authenticators:
-    - global: # Set job permission as those of the triggering user
-        strategy: triggeringUsersAuthorizationStrategy
+      - global: # Set job permission as those of the triggering user
+          strategy: triggeringUsersAuthorizationStrategy
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: false
 
 unclassified:
   location:

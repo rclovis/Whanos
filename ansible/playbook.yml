@@ -1,7 +1,0 @@
----
-- name: kubespray
-  hosts: all
-  user: root
-  gather_facts: false
-  roles:
-    - kubernetes

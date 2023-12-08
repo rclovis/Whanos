@@ -1,0 +1,76 @@
+- name: Install Docker and launch Jenkins
+  hosts: jenkins
+  become: true
+
+  tasks:
+    - name: copy directory images
+      copy:
+        src: "{{ playbook_dir }}/../../../images"
+        dest: /home/ubuntu/
+
+    - name: create path /home/ubuntu/ansible/roles/kubernetes/
+      file:
+        path: /home/ubuntu/ansible/roles/kubernetes/
+        state: directory
+
+    - name: copy admin.conf
+      copy:
+        src: "{{ playbook_dir }}/../../../ansible/roles/kubernetes/admin.conf"
+        dest: /home/ubuntu/ansible/roles/kubernetes/admin.conf
+
+    - name: copy kube
+      copy:
+        src: "{{ playbook_dir }}/../../../kubernetes"
+        dest: /home/ubuntu/
+
+    - name: copy jenkins
+      copy:
+        src: "{{ playbook_dir }}/../../../jenkins"
+        dest: /home/ubuntu/
+
+    - name: chmod +x /home/ubuntu/jenkins/whanos.sh
+      shell: chmod +x /home/ubuntu/jenkins/whanos.sh
+
+    - name: chmod +x /home/ubuntu/kubernetes/deploy_app.sh
+      shell: chmod +x /home/ubuntu/kubernetes/deploy_app.sh
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Enable Docker service
+      service:
+        name: docker
+        enabled: true
+        state: started
+
+    - name: Build Jenkins image
+      shell:
+        cmd: docker build -t jenkins:jcasc -f jenkins/Dockerfile .
+        chdir: /home/ubuntu/
+
+    - name: Set ip Environment Variable with inventory jenkins ip
+      shell:
+        cmd: export ip={{ ansible_host }}
+
+    - name: Run Artifactory container
+      shell:
+        cmd: docker run -d -p 5000:5000 --restart always --name registry registry:2
+        chdir: /home/ubuntu/
+
+    - name: Run Jenkins container
+      shell:
+        cmd: docker run --name jenkins --rm -p 8080:8080 --env IP={{ ansible_host }} --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password -v /var/run/docker.sock:/var/run/docker.sock jenkins:jcasc
+        chdir: /home/ubuntu/

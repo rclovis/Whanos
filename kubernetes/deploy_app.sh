@@ -12,10 +12,10 @@ SHABSOLUTE=$(
 )
 EXECPATH=$(pwd)
 
-rm -f $SHABSOLUTE/mychart/values.yaml
-touch $SHABSOLUTE/mychart/values.yaml
-cat $2 >>$SHABSOLUTE/mychart/values.yaml
-echo "" >>$SHABSOLUTE/mychart/values.yaml
-echo "image: $3" >>$SHABSOLUTE/mychart/values.yaml
+rm -f "$SHABSOLUTE/mychart/values.yaml"
+touch "$SHABSOLUTE/mychart/values.yaml"
+cat "$2" >>"$SHABSOLUTE/mychart/values.yaml"
+echo "" >>"$SHABSOLUTE/mychart/values.yaml"
+echo "image: $3" >>"$SHABSOLUTE/mychart/values.yaml"
 
-helm install $1 $SHABSOLUTE/mychart
+helm install "$1" "$SHABSOLUTE/mychart"

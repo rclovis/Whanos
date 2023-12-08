@@ -62,8 +62,8 @@ if [[ "$last_hash" != "$current_hash" ]]; then
         # Build the images
         docker build . -t "$1" -f "/var/jenkins_home/images/$language/Dockerfile.standalone"
     fi
-    docker tag "$1" "localhost:5000/$1"
-    docker push "localhost:5000/$1"
+    docker tag "$1" "localhost:5000/$1:latest"
+    docker push "localhost:5000/$1:latest"
     docker rmi "$1"
 
     echo "Created image $1 on localhost:5000/$1"
@@ -73,7 +73,7 @@ if [[ "$last_hash" != "$current_hash" ]]; then
     echo "Searching for whanos.yml..."
     if [[ -f whanos.yml ]]; then
         echo "whanos.yml found, deploying..."
-        /var/jenkins_home/kubernetes/deploy_app.sh "$1" "$(pwd)/whanos.yml" "localhost:5000/$1"
+        /var/jenkins_home/kubernetes/deploy_app.sh "$1" "$(pwd)/whanos.yml" "$IP:5000/$1"
     else
         echo "whanos.yml not found, not issuing deployment..."
     fi

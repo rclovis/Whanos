@@ -27,8 +27,10 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: cd documentation \
-          python -m venv .venv \
-          source .venv/bin/activate \
+      - name: Build Site
+        run: |
+          cd documentation
+          python -m venv .venv
+          source .venv/bin/activate
           pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+          mkdocs gh-deploy --force

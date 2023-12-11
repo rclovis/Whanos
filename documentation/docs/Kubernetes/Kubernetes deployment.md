@@ -3,9 +3,9 @@
 For your applications to be deployed, we use Kubernetes.
 Firstly, you must gather the local IP of the machines you want to use as nodes for your cluster.
 
-To set up the Kubernetes cluster, you have to run this script:
+To set up the Kubernetes cluster, you have to run this script :
 ```bash
-./deploy_kube [ip1] [ip2] ...
+./deploy_kube.sh [ip1] [ip2] ...
 ```
 This step can take 30 minutes to 1h depending on the number of nodes
 

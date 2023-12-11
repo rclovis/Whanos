@@ -43,4 +43,3 @@ To use the pipeline, you must understand how to configure your repo and how to l
 [![Made with Docker](https://img.shields.io/badge/Made%20with-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Made with Git](https://img.shields.io/badge/Made%20with-Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 [![Made with Helm](https://img.shields.io/badge/Made%20with-Helm-0F1689?style=for-the-badge&logo=helm&logoColor=white)](https://helm.sh/)
-[![Made with Artifactory](https://img.shields.io/badge/Made%20with-Artifactory-00579D?style=for-the-badge&logo=jfrog&logoColor=white)](https://jfrog.com/artifactory/)

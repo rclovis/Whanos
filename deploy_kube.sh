@@ -36,9 +36,8 @@ for i in ${IPS[@]}; do
 done
 
 # Install kubernetes cluster
-# ansible-playbook -i inventory/mycluster/hosts.yaml --user=$USER --become --become-user=root reset.yml -e ansible_become_pass=$PASSWORD -e kubectl_localhost=true -e kubeconfig_localhost=true
-# ansible-playbook -i inventory/mycluster/hosts.yaml --user=$USER --become --become-user=root cluster.yml -e ansible_become_pass=$PASSWORD -e kubectl_localhost=true -e kubeconfig_localhost=true
-
+ansible-playbook -i inventory/mycluster/hosts.yaml --user=$USER --become --become-user=root reset.yml -e ansible_become_pass=$PASSWORD -e kubectl_localhost=true -e kubeconfig_localhost=true
+ansible-playbook -i inventory/mycluster/hosts.yaml --user=$USER --become --become-user=root cluster.yml -e ansible_become_pass=$PASSWORD -e kubectl_localhost=true -e kubeconfig_localhost=true
 
 for i in ${IPS[@]}; do
     ssh $USER@$i "echo "$PASSWORD" | sudo -S sed -i 's/https:\/\/registry-1.docker.io/http:\/\/'$IP_REGISTRY':5000/g' /etc/containerd/config.toml"
@@ -46,6 +45,5 @@ for i in ${IPS[@]}; do
     ssh $USER@$i "echo "$PASSWORD" | sudo -S sed -i 's/http:\/\/'$IP_REGISTRY':5000\"]/http:\/\/'$IP_REGISTRY':5000\"]\n          insecure_skip_verify = true/g' /etc/containerd/config.toml"
     ssh $USER@$i "echo "$PASSWORD" | sudo -S systemctl restart containerd"
 done
-
 
 cp inventory/mycluster/artifacts/admin.conf ../admin.conf

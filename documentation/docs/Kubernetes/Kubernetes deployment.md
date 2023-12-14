@@ -5,7 +5,7 @@ Firstly, you must gather the local IP of the machines you want to use as nodes f
 
 To set up the Kubernetes cluster, you have to run this script :
 ```bash
-./deploy_kube.sh [ip1] [ip2] ...
+./deploy_kube.sh [ip docker registry] [ip1] [ip2] ...
 ```
 This step can take 30 minutes to 1h depending on the number of nodes
 

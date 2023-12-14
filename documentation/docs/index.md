@@ -11,14 +11,14 @@ Before you begin, ensure you have these packages installed in your machine:
 ## Getting Started
 
 ### Deploy the pipeline
-![image|400](images/image2.png)
+![image|400](Images/image2.png)
 Deploying the pipeline is done using **Ansible** and **Git** in two steps:
 
 * To deploy **Kubernetes**, check out : [Kubernetes deployment](Kubernetes/Kubernetes%20deployment.md)
 * To deploy **Jenkins** and the **Registry**, check out : [Jenkins deployment](Jenkins/Jenkins%20deployment.md), [Registry deployment](Registry/Registry%20deployment.md)
 
 ### Use the pipeline
-![image](images/image1.png)
+![image](Images/image1.png)
 To use the pipeline, you must understand how to configure your repo and how to launch the Jenkins job:
 
 * To start using your **pipeline**, check out: [Jenkins usage](Jenkins/Jenkins%20usage.md)

@@ -72,5 +72,5 @@
 
     - name: Run Jenkins container
       shell:
-        cmd: docker run --name jenkins --rm -p 8080:8080 --env IP={{ ansible_host }} --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password -v /var/run/docker.sock:/var/run/docker.sock jenkins:jcasc
+        cmd: docker run -d --name jenkins --rm -p 8080:8080 --env IP={{ ansible_host }} --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password -v /var/run/docker.sock:/var/run/docker.sock jenkins:jcasc
         chdir: /home/ubuntu/

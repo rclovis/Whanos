@@ -2,6 +2,8 @@
 
 The Whanos project aims at developing an automated pipeline to test, compile and deploy applications written in any languages!
 
+![Whanos](documentation/docs/Images/image1.png)
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have these packages installed in your machine:
